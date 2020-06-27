@@ -1,30 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A proof of concept showing [XState](https://xstate.js.org/) as a conditional routing tool. Routing includes conditional logic based on form state.
 
-## Getting Started
+![Demo](.github/demo.gif)
 
-First, run the development server:
+## Running
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+npm run dev
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Visit `localhost:3000`
 
-## Learn More
+## Most relevant files
 
-To learn more about Next.js, take a look at the following resources:
+### [`flow/useRoutingMachine.js`](flow/useRoutingMachine.js)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+React hook responsible for maintaining a "routing machine." Establishes all routes in a flow and the logic determining which route the user should be sent to next. Exports a `getNextRoute` method, along with the XState machine. This could be refactored so that the routes definition lives elsewhere.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### [`pages/_app.js`](pages/_app.js)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Uses the routing machine hook. Includes the "Next" button's click handler, which calls the hook's `getNextRoute` method and navigates the user to the returned route.
