@@ -23,3 +23,7 @@ React hook responsible for maintaining a "routing machine." Establishes all rout
 ### [`pages/_app.js`](pages/_app.js)
 
 Uses the routing machine hook. Includes the "Next" button's click handler, which calls the hook's `getNextRoute` method and navigates the user to the returned route.
+
+## Links
+
+- [Similar state machine using State Designer](https://viewer.state-designer.com/dnxtMlVieGPCbzezdKpQMWNAJ013/Test)
