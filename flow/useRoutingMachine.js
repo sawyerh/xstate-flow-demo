@@ -1,4 +1,4 @@
-import { Machine, interpret } from "xstate";
+import { Machine } from "xstate";
 
 /**
  * Page routes and routing logic
@@ -48,12 +48,6 @@ function useRoutingMachine() {
     },
     { guards: conditions }
   );
-
-  const service = interpret(routingMachine).onTransition((state) =>
-    console.log(state.value)
-  );
-
-  service.start();
 
   /**
    * Get the next route in the flow after the current route
